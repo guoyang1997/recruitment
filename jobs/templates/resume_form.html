@@ -1,0 +1,18 @@
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% bootstrap_messages %}
+
+<div class="container">
+    <form action="/url/to/submit" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form from %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                Submit
+            </button>
+        {% endbuttons %}
+    </form>
+</div>
