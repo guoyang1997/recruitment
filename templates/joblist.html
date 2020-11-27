@@ -3,9 +3,41 @@
 {% block content %}
 
 {% if job_list %}
+{#    <table class="table table-striped">#}
+{#      <thead>#}
+{#        <tr>#}
+{#          <th scope="col">编号</th>#}
+{#          <th scope="col">职位分类  <a href="/job/{{ job.id }}/" ></th>#}
+{#          <th scope="col">Last</th>#}
+{#          <th scope="col">Handle</th>#}
+{#        </tr>#}
+{#      </thead>#}
+{#      <tbody>#}
+{#        <tr>#}
+{#          <th scope="row">1</th>#}
+{#          <td>Mark</td>#}
+{#          <td>Otto</td>#}
+{#          <td>@mdo</td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <th scope="row">2</th>#}
+{#          <td>Jacob</td>#}
+{#          <td>Thornton</td>#}
+{#          <td>@fat</td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#          <th scope="row">3</th>#}
+{#          <td>Larry</td>#}
+{#          <td>the Bird</td>#}
+{#          <td>@twitter</td>#}
+{#        </tr>#}
+{#      </tbody>#}
+{#    </table>#}
    <ul>
+   <li>职位分类 &nbsp;&nbsp; <a href="/job/{{ job.id }}/" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职位</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;城市</li>
    {% for job in job_list %}
-       <li>{{job.type_name}}  <a href="/job/{{ job.id }}/" style="color:blue">{{ job.job_name }}</a>{{job.city_name}}</li>
+
+       <li>&nbsp;{{job.type_name}} &nbsp;&nbsp;&nbsp;&nbsp; <a href="/job/{{ job.id }}/" style="color:blue">&nbsp;&nbsp;&nbsp;&nbsp;{{ job.job_name }}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{job.city_name}}</li>
    {% endfor %}
    </ul>
 {% else %}

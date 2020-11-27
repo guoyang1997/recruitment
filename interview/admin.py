@@ -13,8 +13,6 @@ from django.contrib import messages
 exportable_fields = ('username', 'city', 'phone', 'bachelor_school', 'master_school', 'degree', 'first_result', 'first_interviewer_user',
                      'second_result', 'second_interviewer_user', 'hr_result', 'hr_score', 'hr_remark', 'hr_interviewer_user')
 
-
-
 def enter_interview_process(modeladmin,request,queryset):
     candidate_names = ''
     for resume in queryset:
@@ -27,7 +25,7 @@ def enter_interview_process(modeladmin,request,queryset):
         candidate.creator = request.user.username
         candidate.save()
     messages.add_message(request,messages.INFO,'候选人%s已经成功进入面试流程'%(candidate_names))
-    send("hello候选人 %s进入面试环节，亲爱的面试官，请准备面试" % (candidate_names))
+    send("候选人 %s进入面试环节，亲爱的面试官，请准备面试" % (candidate_names))
 enter_interview_process.short_description = u"进入面试流程"
 
 
@@ -37,7 +35,7 @@ def notify_interviewer(modeladmin,request,queryset):
     for obj in queryset:
         candidates = obj.username + ";" + candidates
         interviewer = obj.first_interviewer_user.username + ";" + interviewer
-    send ("hello候选人 %s进入面试环节，亲爱的面试官，请准备面试：%s"%(candidates,interviewer))
+    send("候选人  %s   进入面试环节，亲爱的面试官，请准备面试：%s"%(candidates,interviewer))
 notify_interviewer.short_description=u'通知一面面试官'
 
 def export_model_as_csv(modeladmin, request, queryset):
@@ -78,7 +76,7 @@ class CandidateAdmin(admin.ModelAdmin):
         opts = self.opts
         return request.user.has_perm('%s,%s '%(opts.app_label,"export"))
     list_display = (
-        'username',  'city', 'bachelor_school','get_resume', 'first_score', 'first_result', 'first_interviewer_user', 'second_score',
+        'username',  'city', 'bachelor_school', 'get_resume', 'first_score', 'first_result', 'first_interviewer_user', 'second_score',
         'second_result', 'second_interviewer_user', 'hr_score', 'hr_result', 'hr_interviewer_user','last_editor')
     default_fieldsets = (
         ('基本信息', {'fields': (
@@ -179,6 +177,7 @@ class ResumeAdmin(admin.ModelAdmin):
             ("bachelor_school", "master_school"), ("major", "degree"), ('created_date', 'modified_date'),
             "candidate_introduction", "work_experience", "project_experience",)}),
     )
+
 
     def save_model(self, request, obj, form, change):
         obj.applicant = request.user

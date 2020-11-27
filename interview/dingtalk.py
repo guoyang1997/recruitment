@@ -9,5 +9,6 @@ def send(message, at_mobiles=[]):
     webhook = base.DINGTALK_WEB_HOOK
     xiaoding = DingtalkChatbot(webhook,secret=secret)
     xiaoding.send_text(msg=('面试通知：%s'%message),at_mobiles=at_mobiles)
-
+    # xiaoding.send_link(title='面试通知:', text='%s'%message,
+    #                    message_url='http://www.kwongwah.com.my/?p=454748", pic_url="https://pbs.twimg.com/media/CEwj7EDWgAE5eIF.jpg')
 

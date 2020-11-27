@@ -5,6 +5,7 @@ from . import views
 urlpatterns = [
     path('', joblist, name="joblist"),
     path('job/<int:job_id>/', jobdetail, name="jobdetail"),
-    path('resume/add/', views.ResumeCreateView.as_view(),name='resume-add')
+    path('resume/add/', views.ResumeCreateView.as_view(),name='resume-add'),
+    path('resume/<int:pk>',views.ResumeDetailView.as_view(),name="resume-detail"),
     # path('resume/<int:pk>', views.)
 ]

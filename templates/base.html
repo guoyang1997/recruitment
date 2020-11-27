@@ -1,43 +1,36 @@
-{% extends 'bootstrap4/bootstrap4.html' %}
 
+{% extends 'bootstrap4/bootstrap4.html' %}
+{% load i18n %}
 
 {% load bootstrap4 %}
 {% block bootstrap4_content %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">首页</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">招聘者 <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">求职技巧</a>
-      </li>
+      <a class="navbar-brand" href="/">{% trans '首页' %}</a>
 
-    </ul>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-  </div>
-   {% if request.user.is_authenticated %}
-    <b><a href="" style="color:red;">{{ request.user.username }}</a></b>
-       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <i><a href="/accounts/logout">退出</a></i>
-    {% else %}
-    <ul>
-    <li><a href="/accounts/login">登录</a></li>
-    </ul>
-    {% endif %}
-</nav>
+      </div>
+       {% if request.user.is_authenticated %}
+        <b><a href="" style="color:red;">{{ request.user.username }}</a></b>
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i>
+            <a href="/accounts/logout">{% trans '退出' %}</a>
+
+        </i>
+        {% else %}
+
+        <span><a href="/accounts/login">{% trans '登录' %} &nbsp;&nbsp;</a></span>
+        <span><a href="/accounts/register">{% trans '注册' %}</a></span>
+
+        {% endif %}
+    </nav>
+<h1>{% trans '公司招聘职位' %}<span class="badge badge-secondary"></span></h1>
 
 
-
-<h1>xx公司招聘职位</h1>
-<p>终于等到你，还好没放弃</p>
-
-<button class="btn btn-primary">点击按钮</button>
-
+<button class="btn btn-primary">{% trans '点击按钮' %}</button>
 
 <button type="button" class="btn btn-link">Link</button>
 

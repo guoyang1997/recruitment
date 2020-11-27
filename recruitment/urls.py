@@ -17,6 +17,8 @@ urlpatterns = [
     #     TemplateView.as_view(template_name='profile.html'),
     #
     #     name='profile'),
+    path('i18n/',include("django.conf.urls.i18n"))
 ]
 
 admin.site.site_header = _("北京网络科技招聘管理系统")
+
